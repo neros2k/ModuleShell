@@ -1,3 +1,6 @@
+# Secret token
+src/main/java/n2k_/moduleshell/SecretData.java
+
 # User-specific stuff
 .idea/
 
