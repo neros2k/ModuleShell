@@ -24,10 +24,8 @@ public class HelpCommand extends AbstractMessageCommand {
                 StringBuilder stringBuilder = new StringBuilder();
                 commandModule.getCommandList().forEach(command -> {
                     stringBuilder.append(command.getPrefix())
-                                 .append(command.getName())
-                                 .append(" - ")
-                                 .append(command.getDescription())
-                                 .append("\n");
+                                 .append(command.getName()).append(" - ")
+                                 .append(command.getDescription()).append("\n");
                 });
                 builder.addField(commandModule.getID(), stringBuilder.toString(), false);
             }
