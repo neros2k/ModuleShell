@@ -1,4 +1,4 @@
 package n2k_.moduleshell.base;
-public interface IInitilizable {
+public interface Initilizable {
     void init();
 }
