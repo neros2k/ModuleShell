@@ -12,9 +12,10 @@ public class DefaultModule extends AbstractModule {
     @Override
     public void init() {
         super.addListener(new CallCommand(
-                this, super.getJDA(), "def-ping", "Default ping command.", DefaultModule.DEFAULT_PREFIX,
-                (ctx) -> ctx.getChannel().sendMessage("Pong!").queue()
+                this, super.getJDA(), "def-ping", "Default ping command.",
+                DefaultModule.DEFAULT_PREFIX, (ctx) -> ctx.getChannel().sendMessage("Pong!").queue()
         ));
+        super.addListener(new InstallCommand(this, DefaultModule.DEFAULT_PREFIX));
         super.init();
     }
 

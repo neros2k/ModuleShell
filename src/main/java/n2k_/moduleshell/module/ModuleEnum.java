@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 public enum ModuleEnum {
-    DEFAULT_MODULE(new DefaultModule("default-module", ModuleShell.getJDA()));
+    DEFAULT_MODULE(new DefaultModule("default-module", ModuleShell.getJDA())),
+    FUCKING_MODULE(new FuckingModule("fucking-module", ModuleShell.getJDA()));
     private static Map<String, AbstractModule> MODULES;
     private final AbstractModule MODULE;
     ModuleEnum(AbstractModule module) {
