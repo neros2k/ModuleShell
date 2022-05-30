@@ -10,7 +10,6 @@ public class CommandContext {
     final Member AUTHOR;
     final MessageChannel CHANNEL;
     final String[] ARGS;
-
     @Contract(pure = true)
     public CommandContext(JDA jda, @NotNull String command, Member author, MessageChannel channel) {
         this.JDA = jda;
@@ -19,23 +18,18 @@ public class CommandContext {
         this.CHANNEL = channel;
         this.ARGS = command.split(" ");
     }
-
     public JDA getJDA() {
         return this.JDA;
     }
-
     public String getCommand() {
         return this.COMMAND;
     }
-
     public Member getAuthor() {
         return this.AUTHOR;
     }
-
     public MessageChannel getChannel() {
         return this.CHANNEL;
     }
-
     public String[] getArgs() {
         return this.ARGS;
     }
