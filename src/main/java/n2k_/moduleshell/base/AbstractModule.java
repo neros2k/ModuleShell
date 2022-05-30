@@ -28,7 +28,7 @@ public abstract class AbstractModule implements Initilizable {
         this.LISTENER_LIST.add(listener);
     }
 
-    protected boolean notValid(String serverId) {
+    public boolean notValid(String serverId) {
         if(ModuleShell.getEnabledModulesMap().isEmpty()) return true;
         return !Arrays.stream(ModuleShell.getEnabledModulesMap().get(serverId)).toList().contains(this.ID);
     }
