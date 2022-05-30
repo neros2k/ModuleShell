@@ -1,9 +1,10 @@
 package n2k_.moduleshell.module.base;
-import n2k_.moduleshell.base.AbstractModule;
-import n2k_.moduleshell.base.command.CallCommand;
+import n2k_.moduleshell.base.AbstractCommandModule;
+import n2k_.moduleshell.module.base.command.HelpCommand;
+import n2k_.moduleshell.module.base.command.PingCommand;
 import net.dv8tion.jda.api.JDA;
-public class DefaultModule extends AbstractModule {
-    private final static String DEFAULT_PREFIX = "$";
+public class DefaultModule extends AbstractCommandModule {
+    private final static String DEFAULT_PREFIX = "def.";
 
     public DefaultModule(String id, JDA jda) {
         super(id, jda);
@@ -11,16 +12,8 @@ public class DefaultModule extends AbstractModule {
 
     @Override
     public void init() {
-        super.addListener(new CallCommand(
-                this, super.getJDA(), "def-ping", "Default ping command.",
-                DefaultModule.DEFAULT_PREFIX, (ctx) -> ctx.getChannel().sendMessage("Pong!").queue()
-        ));
-        super.addListener(new InstallCommand(this, DefaultModule.DEFAULT_PREFIX));
+        super.addCommand(new PingCommand(this, super.getJDA(), "ping", "Default ping command.", DefaultModule.DEFAULT_PREFIX));
+        super.addCommand(new HelpCommand(this, super.getJDA(), "help", "Default help command.", DefaultModule.DEFAULT_PREFIX));
         super.init();
-    }
-
-    @Override
-    public boolean notValid(String serverId) {
-        return false;
     }
 }

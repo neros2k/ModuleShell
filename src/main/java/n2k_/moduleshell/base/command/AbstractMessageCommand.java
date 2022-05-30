@@ -1,10 +1,11 @@
 package n2k_.moduleshell.base.command;
 import n2k_.moduleshell.ModuleShell;
 import n2k_.moduleshell.base.AbstractModule;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 public abstract class AbstractMessageCommand extends AbstractCommand {
-    public AbstractMessageCommand(AbstractModule module, net.dv8tion.jda.api.JDA jda, String name, String description, String prefix) {
+    public AbstractMessageCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
         super(module, jda, name, description, prefix);
     }
 

@@ -1,5 +1,4 @@
 package n2k_.moduleshell;
-import n2k_.moduleshell.module.ModuleEnum;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.jetbrains.annotations.Contract;
@@ -17,14 +16,14 @@ public class ModuleShell {
 
     @Contract(pure = true) @NotNull
     public static String notEnabledModuleMessage(String moduleId) {
-        return "Module `" + moduleId + "` not enabled.";
+        return "Module `" + moduleId + "` not installed.";
     }
 
     public static Map<String, ArrayList<String>> getEnabledModulesMap() {
             return ModuleShell.ENABLED_MODULES;
     }
 
-    public static boolean enableModule(String serverId, String moduleId) {
+    public static boolean installModule(String serverId, String moduleId) {
         ArrayList<String> enabledModules = ModuleShell.ENABLED_MODULES.get(serverId);
         if(enabledModules == null) {
             enabledModules = new ArrayList<>();
