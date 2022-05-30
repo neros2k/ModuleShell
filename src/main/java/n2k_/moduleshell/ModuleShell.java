@@ -10,12 +10,15 @@ import java.util.Map;
 public class ModuleShell {
     private final static Map<String, String[]> ENABLED_MODULES = new HashMap<>();
     private static JDA JDA;
-    static {
-        //ModuleShell.ENABLED_MODULES.put("909541622600056853", new String[]{"default-module"});
-    }
+
     public static void main(String @NotNull [] args) throws LoginException {
         ModuleShell.JDA = JDABuilder.createDefault("").build();
         ModuleEnum.initModules();
+    }
+
+    @Contract(pure = true) @NotNull
+    public static String notEnabledModuleMessage(String moduleId) {
+        return "Module `" + moduleId + "` not enabled.";
     }
 
     public static Map<String, String[]> getEnabledModulesMap() {
@@ -24,10 +27,5 @@ public class ModuleShell {
 
     public static JDA getJDA() {
         return ModuleShell.JDA;
-    }
-
-    @Contract(pure = true) @NotNull
-    public static String notEnabledModuleMessage(String moduleId) {
-        return "Module `" + moduleId + "` not enabled.";
     }
 }

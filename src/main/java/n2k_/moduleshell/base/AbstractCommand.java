@@ -5,16 +5,22 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import org.jetbrains.annotations.NotNull;
-public abstract class CommandListener extends AbstractListener {
+public abstract class AbstractCommand extends AbstractListener {
     private final String NAME;
     private final String DESCRIPTION;
     private final String PREFIX;
+    private final ICommandCall CALL;
 
-    public CommandListener(AbstractModule module, JDA jda, String name, String description, String prefix) {
+    public AbstractCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
+        this(module, jda, name, description, prefix, null);
+    }
+
+    public AbstractCommand(AbstractModule module, JDA jda, String name, String description, String prefix, ICommandCall call) {
         super(module, jda);
         this.NAME = name;
         this.DESCRIPTION = description;
         this.PREFIX = prefix;
+        this.CALL = call;
     }
 
     @Override
@@ -46,6 +52,32 @@ public abstract class CommandListener extends AbstractListener {
         }
     }
 
-    protected abstract void onSlashCommand(CommandContext ctx, SlashCommandInteractionEvent event);
-    protected abstract void onMessageCommand(CommandContext ctx, MessageReceivedEvent event);
+    protected void onSlashCommand(CommandContext ctx, SlashCommandInteractionEvent event) {
+        if(this.CALL != null) {
+            this.onCommand(ctx);
+        }
+    }
+
+    protected void onMessageCommand(CommandContext ctx, MessageReceivedEvent event) {
+        if(this.CALL != null) {
+            this.onCommand(ctx);
+        }
+    }
+
+    protected void onCommand(CommandContext ctx) {
+        assert this.CALL != null;
+        this.CALL.call(ctx);
+    }
+
+    public String getName() {
+        return this.NAME;
+    }
+
+    public String getDescription() {
+        return this.DESCRIPTION;
+    }
+
+    public String getPrefix() {
+        return this.PREFIX;
+    }
 }
