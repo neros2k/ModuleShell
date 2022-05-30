@@ -1,6 +1,8 @@
 package n2k_.moduleshell.base;
+import n2k_.moduleshell.ModuleShell;
 import net.dv8tion.jda.api.JDA;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 public abstract class AbstractModule implements Initilizable {
     private final String ID;
@@ -24,6 +26,11 @@ public abstract class AbstractModule implements Initilizable {
 
     public void addListener(AbstractListener listener) {
         this.LISTENER_LIST.add(listener);
+    }
+
+    protected boolean notValid(String serverId) {
+        if(ModuleShell.getEnabledModulesMap().isEmpty()) return true;
+        return !Arrays.stream(ModuleShell.getEnabledModulesMap().get(serverId)).toList().contains(this.ID);
     }
 
     public String getID() {
