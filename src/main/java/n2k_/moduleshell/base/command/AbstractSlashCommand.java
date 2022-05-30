@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import org.jetbrains.annotations.NotNull;
-public abstract class AbstractSlashCommand extends AbstractCommand {
+public abstract class AbstractSlashCommand extends AbstractMessageCommand {
     public AbstractSlashCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
         super(module, jda, name, description, prefix);
     }
