@@ -3,7 +3,7 @@ import n2k_.moduleshell.base.AbstractCommandModule;
 import n2k_.moduleshell.module.msr.command.InstallCommand;
 import net.dv8tion.jda.api.JDA;
 public class MsrModule extends AbstractCommandModule {
-    private final static String MSR_PREFIX = "msr.";
+    private final static String DEFAULT_PREFIX = "msr.";
 
     public MsrModule(String id, JDA jda) {
         super(id, jda);
@@ -11,7 +11,7 @@ public class MsrModule extends AbstractCommandModule {
 
     @Override
     public void init() {
-        super.addCommand(new InstallCommand(this, "install", "Install module command.", MsrModule.MSR_PREFIX));
+        super.addCommand(new InstallCommand(this, "install", "Install module command.", MsrModule.DEFAULT_PREFIX));
         super.init();
     }
 

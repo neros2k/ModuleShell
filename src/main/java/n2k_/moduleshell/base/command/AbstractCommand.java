@@ -1,6 +1,8 @@
 package n2k_.moduleshell.base.command;
+import n2k_.moduleshell.ModuleEnum;
 import n2k_.moduleshell.base.AbstractListener;
 import n2k_.moduleshell.base.AbstractModule;
+import n2k_.moduleshell.module.config.ConfigModule;
 import net.dv8tion.jda.api.JDA;
 public abstract class AbstractCommand extends AbstractListener {
     private final String NAME;
@@ -24,5 +26,10 @@ public abstract class AbstractCommand extends AbstractListener {
 
     public String getPrefix() {
         return this.PREFIX;
+    }
+
+    public String getPrefix(String serverId) {
+        return ConfigModule.getConfig(serverId, super.getModule().getID())
+                           .getValues().getOrDefault("prefix", this.PREFIX);
     }
 }

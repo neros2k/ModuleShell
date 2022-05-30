@@ -8,10 +8,6 @@ public abstract class AbstractConfig implements Initilizable, Cloneable {
         this.VALUES = new HashMap<>();
     }
 
-    public Map<String, String> getValues() {
-        return this.VALUES;
-    }
-
     @Override
     public AbstractConfig clone() {
         try {
@@ -19,5 +15,13 @@ public abstract class AbstractConfig implements Initilizable, Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public Map<String, String> getValues() {
+        return this.VALUES;
+    }
+
+    public String getLocalised(String value) {
+        return this.VALUES.getOrDefault(this.VALUES.get("locale") + "." + value, "eng." + value);
     }
 }

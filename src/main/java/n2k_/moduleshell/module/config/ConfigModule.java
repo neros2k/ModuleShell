@@ -13,15 +13,19 @@ public class ConfigModule extends AbstractCommandModule {
         this.CONFIG_MAP = new HashMap<>();
     }
 
-    public HashMap<String, AbstractConfig> getGuildConfig(String serverId) {
-        return this.CONFIG_MAP.computeIfAbsent(
-                serverId, k -> new HashMap<>()
-        );
+    public static HashMap<String, AbstractConfig> getGuildConfig(String serverId) {
+        ConfigModule configModule = (ConfigModule) ModuleEnum.CONFIG_MODULE.getModule();
+        if(!configModule.CONFIG_MAP.containsKey(serverId)) {
+            configModule.CONFIG_MAP.put(serverId, new HashMap<>());
+        }
+        return configModule.CONFIG_MAP.get(serverId);
     }
 
-    public AbstractConfig getConfig(String serverId, String moduleId) {
-        return this.CONFIG_MAP.get(serverId).computeIfAbsent(
-                serverId, k -> ModuleEnum.valueOf(moduleId).getConfig().clone()
-        );
+    public static AbstractConfig getConfig(String serverId, String moduleId) {
+        HashMap<String, AbstractConfig> guildConfig = ConfigModule.getGuildConfig(serverId);
+        if(!guildConfig.containsKey(moduleId)) {
+            guildConfig.put(moduleId, ModuleEnum.valueOf(moduleId).getConfig().clone());
+        }
+        return ConfigModule.getGuildConfig(serverId).get(moduleId);
     }
 }

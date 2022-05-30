@@ -2,12 +2,16 @@ package n2k_.moduleshell;
 import n2k_.moduleshell.base.AbstractConfig;
 import n2k_.moduleshell.base.AbstractModule;
 import n2k_.moduleshell.module.base.DefaultModule;
+import n2k_.moduleshell.module.config.ConfigModule;
 import n2k_.moduleshell.module.config.module.BaseConfig;
+import n2k_.moduleshell.module.msr.MsrModule;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 public enum ModuleEnum {
-    DEFAULT_MODULE(new DefaultModule("default-module", ModuleShell.getJDA()), new BaseConfig());
+    default_module(new DefaultModule("default_module", ModuleShell.getJDA()), new BaseConfig()),
+    msr_module(new MsrModule("msr_module", ModuleShell.getJDA()), new BaseConfig()),
+    config_module(new ConfigModule("config_module", ModuleShell.getJDA()), new BaseConfig());
 
     private static Map<String, AbstractModule> MODULES;
     private final AbstractModule MODULE;
@@ -25,7 +29,14 @@ public enum ModuleEnum {
     }
 
     public static void initModules() {
-        Arrays.stream(ModuleEnum.values()).forEach(moduleEnum -> moduleEnum.MODULE.init());
+        Arrays.stream(ModuleEnum.values()).forEach(moduleEnum -> {
+            moduleEnum.MODULE.init();
+            moduleEnum.CONFIG.init();
+        });
+    }
+
+    public AbstractModule getModule() {
+        return this.MODULE;
     }
 
     public AbstractConfig getConfig() {
