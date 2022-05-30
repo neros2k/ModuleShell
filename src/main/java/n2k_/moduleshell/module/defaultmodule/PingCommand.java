@@ -1,9 +1,9 @@
 package n2k_.moduleshell.module.defaultmodule;
 import n2k_.moduleshell.base.AbstractModule;
+import n2k_.moduleshell.base.CommandContext;
 import n2k_.moduleshell.base.CommandListener;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import org.jetbrains.annotations.NotNull;
 public class PingCommand extends CommandListener {
     private final static String COMMAND_NAME = "def-ping";
     private final static String COMMAND_DESC = "Default ping command.";
@@ -13,7 +13,12 @@ public class PingCommand extends CommandListener {
     }
 
     @Override
-    protected void onCommand(String command, Member author, MessageChannel channel) {
-        channel.sendMessage("Pong!").queue();
+    protected void onCommand(@NotNull CommandContext ctx) {
+        ctx.getChannel().sendMessage("Pong!").queue();
+    }
+
+    @Override
+    protected boolean isValid(String id) {
+        return true;
     }
 }

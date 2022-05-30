@@ -20,4 +20,12 @@ public abstract class AbstractListener extends ListenerAdapter implements Initil
     protected boolean isValid(String id) {
         return Arrays.stream(ModuleShell.getEnabledModulesMap().get(id)).toList().contains(this.MODULE.getID());
     }
+
+    public AbstractModule getModule() {
+        return this.MODULE;
+    }
+
+    public JDA getJDA() {
+        return this.JDA;
+    }
 }
