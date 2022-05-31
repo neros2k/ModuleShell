@@ -1,6 +1,6 @@
-package n2k_.moduleshell.base.command;
+package n2k_.moduleshell.core.command;
 import n2k_.moduleshell.ModuleShell;
-import n2k_.moduleshell.base.AbstractModule;
+import n2k_.moduleshell.core.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;

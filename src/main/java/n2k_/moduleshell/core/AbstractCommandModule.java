@@ -1,5 +1,5 @@
-package n2k_.moduleshell.base;
-import n2k_.moduleshell.base.command.AbstractCommand;
+package n2k_.moduleshell.core;
+import n2k_.moduleshell.core.command.AbstractCommand;
 import net.dv8tion.jda.api.JDA;
 import java.util.ArrayList;
 import java.util.List;

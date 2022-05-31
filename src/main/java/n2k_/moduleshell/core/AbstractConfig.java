@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base;
+package n2k_.moduleshell.core;
 import java.util.HashMap;
 import java.util.Map;
 public abstract class AbstractConfig implements Initilizable, Cloneable {
@@ -23,9 +23,5 @@ public abstract class AbstractConfig implements Initilizable, Cloneable {
 
     public String getValue(String value) {
         return this.VALUES.getOrDefault(value, "null");
-    }
-
-    public String getLocalised(String value) {
-        return this.VALUES.getOrDefault(this.getValue("locale") + "." + value, this.getValue("eng." + value));
     }
 }

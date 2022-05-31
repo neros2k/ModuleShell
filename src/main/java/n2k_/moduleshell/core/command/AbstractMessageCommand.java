@@ -1,6 +1,6 @@
-package n2k_.moduleshell.base.command;
+package n2k_.moduleshell.core.command;
 import n2k_.moduleshell.ModuleShell;
-import n2k_.moduleshell.base.AbstractModule;
+import n2k_.moduleshell.core.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ public abstract class AbstractMessageCommand extends AbstractCommand {
         String guildId = event.getGuild().getId();
         String message = event.getMessage().getContentDisplay();
         String[] split = message.split(" ");
-        if(split[0].equals(super.getPrefix(guildId)+super.getName(guildId))) {
+        if(split[0].equals(super.getPrefix()+super.getName())) {
             if(super.getModule().notValid(event.getGuild().getId())) {
                 event.getMessage().reply(ModuleShell.notEnabledModuleMessage(super.getModule().getID())).queue();
             } else {

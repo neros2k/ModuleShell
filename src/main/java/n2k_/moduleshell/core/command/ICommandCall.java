@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base.command;
+package n2k_.moduleshell.core.command;
 public interface ICommandCall {
     void call(CommandContext ctx);
 }

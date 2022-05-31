@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base;
+package n2k_.moduleshell.core;
 import n2k_.moduleshell.ModuleShell;
 import net.dv8tion.jda.api.JDA;
 import java.util.ArrayList;

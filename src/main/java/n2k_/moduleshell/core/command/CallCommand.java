@@ -1,5 +1,5 @@
-package n2k_.moduleshell.base.command;
-import n2k_.moduleshell.base.AbstractModule;
+package n2k_.moduleshell.core.command;
+import n2k_.moduleshell.core.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 public class CallCommand extends AbstractMessageCommand {
