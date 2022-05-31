@@ -1,8 +1,9 @@
-package n2k_.moduleshell.core;
+package n2k_.moduleshell.core.module;
+import n2k_.moduleshell.core.AbstractListener;
+import n2k_.moduleshell.core.Initilizable;
 import n2k_.moduleshell.core.command.CommandContext;
 import net.dv8tion.jda.api.JDA;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 public abstract class AbstractModule implements Initilizable {

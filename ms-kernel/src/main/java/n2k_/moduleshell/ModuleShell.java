@@ -1,4 +1,5 @@
 package n2k_.moduleshell;
+import n2k_.moduleshell.core.module.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.jetbrains.annotations.NotNull;
@@ -12,5 +13,9 @@ public class ModuleShell {
 
     public static JDA getJDA() {
         return ModuleShell.JDA;
+    }
+
+    public static void registerModule(@NotNull AbstractModule module) {
+        module.init();
     }
 }

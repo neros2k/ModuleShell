@@ -1,6 +1,6 @@
 package n2k_.moduleshell.core.command;
 import n2k_.moduleshell.core.AbstractListener;
-import n2k_.moduleshell.core.AbstractModule;
+import n2k_.moduleshell.core.module.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 public abstract class AbstractCommand extends AbstractListener {
     private final String NAME;

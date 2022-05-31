@@ -1,9 +1,9 @@
-package n2k_.moduleshell.core;
+package n2k_.moduleshell.core.module;
 import n2k_.moduleshell.core.command.AbstractCommand;
 import net.dv8tion.jda.api.JDA;
 import java.util.ArrayList;
 import java.util.List;
-public class AbstractCommandModule extends AbstractModule {
+public abstract class AbstractCommandModule extends AbstractModule {
     private final List<AbstractCommand> COMMAND_LIST;
 
     public AbstractCommandModule(String id, JDA jda) {

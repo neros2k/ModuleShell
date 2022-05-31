@@ -1,5 +1,5 @@
 package n2k_.moduleshell.core.command;
-import n2k_.moduleshell.core.AbstractModule;
+import n2k_.moduleshell.core.module.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 public abstract class AbstractConfigCommand extends AbstractCommand {
     public AbstractConfigCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
