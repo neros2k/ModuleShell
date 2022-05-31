@@ -12,8 +12,8 @@ public class DefaultModule extends AbstractCommandModule {
 
     @Override
     public void init() {
-        super.addCommand(new PingCommand(this, super.getJDA(), DefaultModule.DEFAULT_PREFIX));
-        super.addCommand(new HelpCommand(this, super.getJDA(), DefaultModule.DEFAULT_PREFIX));
+        super.addCommand(new PingCommand(this, DefaultModule.DEFAULT_PREFIX));
+        super.addCommand(new HelpCommand(this, DefaultModule.DEFAULT_PREFIX));
         super.init();
     }
 

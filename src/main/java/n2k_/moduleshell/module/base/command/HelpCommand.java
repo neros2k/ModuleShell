@@ -8,7 +8,6 @@ import n2k_.moduleshell.base.command.AbstractMessageCommand;
 import n2k_.moduleshell.base.command.CommandContext;
 import n2k_.moduleshell.module.config.ConfigModule;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
@@ -16,8 +15,8 @@ public class HelpCommand extends AbstractMessageCommand {
     private final static String DEFAULT_NAME = "help";
     private final static String DEFAULT_DESCRIPTION = "Help command.";
 
-    public HelpCommand(AbstractModule module, JDA jda, String prefix) {
-        super(module, jda, HelpCommand.DEFAULT_NAME, HelpCommand.DEFAULT_DESCRIPTION, prefix);
+    public HelpCommand(AbstractModule module, String prefix) {
+        super(module, module.getJDA(), HelpCommand.DEFAULT_NAME, HelpCommand.DEFAULT_DESCRIPTION, prefix);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class HelpCommand extends AbstractMessageCommand {
                 commandModule.getCommandList().forEach(command -> {
                     stringBuilder.append(command.getPrefix(guildId))
                                  .append(command.getName(guildId)).append(" - ")
-                                 .append(commandConfig.getLocalised(command.getName()+".description")).append("\n");
+                                 .append(command.getDescription(guildId)).append("\n");
                 });
                 builder.addField(commandConfig.getLocalised("name"), stringBuilder.toString(), false);
             }

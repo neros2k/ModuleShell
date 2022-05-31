@@ -10,8 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 public enum ModuleEnum {
     default_module(new DefaultModule("default_module", ModuleShell.getJDA()), new BaseConfig()),
-    msr_module(new MsrModule("msr_module", ModuleShell.getJDA()), new BaseConfig()),
-    config_module(new ConfigModule("config_module", ModuleShell.getJDA()), new BaseConfig());
+    msr_module(new MsrModule("msr_module", ModuleShell.getJDA()), new AbstractConfig() {
+        @Override
+        public void init() {
+
+        }
+    }),
+    config_module(new ConfigModule("config_module", ModuleShell.getJDA()), new AbstractConfig() {
+        @Override
+        public void init() {
+
+        }
+    });
 
     private static Map<String, AbstractModule> MODULES;
     private final AbstractModule MODULE;

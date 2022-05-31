@@ -4,6 +4,7 @@ import n2k_.moduleshell.base.AbstractListener;
 import n2k_.moduleshell.base.AbstractModule;
 import n2k_.moduleshell.module.config.ConfigModule;
 import net.dv8tion.jda.api.JDA;
+import java.util.Map;
 public abstract class AbstractCommand extends AbstractListener {
     private final String NAME;
     private final String DESCRIPTION;
@@ -29,17 +30,17 @@ public abstract class AbstractCommand extends AbstractListener {
     }
 
     public String getName(String serverId) {
-        return ConfigModule.getConfig(serverId, super.getModule().getID())
-                .getValues().getOrDefault(this.NAME + ".name", this.NAME);
+        Map<String, String> values = ConfigModule.getConfig(serverId, super.getModule().getID()).getValues();
+        return values.getOrDefault(values.get("locale") + "." + this.NAME + ".name", this.NAME);
     }
 
     public String getDescription(String serverId) {
-        return ConfigModule.getConfig(serverId, super.getModule().getID())
-                .getValues().getOrDefault(this.NAME + ".description", this.DESCRIPTION);
+        Map<String, String> values = ConfigModule.getConfig(serverId, super.getModule().getID()).getValues();
+        return values.getOrDefault(values.get("locale") + "." + this.NAME + ".description", this.DESCRIPTION);
     }
 
     public String getPrefix(String serverId) {
         return ConfigModule.getConfig(serverId, super.getModule().getID())
-                           .getValues().getOrDefault("prefix", this.PREFIX);
+                .getValues().getOrDefault("prefix", this.PREFIX);
     }
 }
