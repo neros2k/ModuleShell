@@ -21,6 +21,10 @@ public abstract class AbstractConfig implements Initilizable, Cloneable {
         return this.VALUES;
     }
 
+    public String getValue(String value) {
+        return this.VALUES.getOrDefault(value, "null");
+    }
+
     public String getLocalised(String value) {
         return this.VALUES.getOrDefault(this.VALUES.get("locale") + "." + value, "eng." + value);
     }

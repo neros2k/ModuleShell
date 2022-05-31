@@ -17,7 +17,7 @@ public class HelpCommand extends AbstractMessageCommand {
     private final static String DEFAULT_DESCRIPTION = "Help command.";
 
     public HelpCommand(AbstractModule module, JDA jda, String prefix) {
-        super(module, jda, "help", "Help command.", prefix);
+        super(module, jda, HelpCommand.DEFAULT_NAME, HelpCommand.DEFAULT_DESCRIPTION, prefix);
     }
 
     @Override
