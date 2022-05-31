@@ -1,6 +1,8 @@
 package n2k_.moduleshell.core;
-import n2k_.moduleshell.ModuleShell;
+import n2k_.moduleshell.core.command.CommandContext;
 import net.dv8tion.jda.api.JDA;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 public abstract class AbstractModule implements Initilizable {
@@ -27,9 +29,12 @@ public abstract class AbstractModule implements Initilizable {
         this.LISTENER_LIST.add(listener);
     }
 
-    public boolean notValid(String serverId) {
-        if(ModuleShell.getEnabledModulesMap().isEmpty()) return true;
-        return !ModuleShell.getEnabledModulesMap().get(serverId).contains(this.ID);
+    public boolean isValid(String serverId) {
+        return true;
+    }
+
+    public void onInvalidCall(@NotNull CommandContext ctx) {
+        ctx.getChannel().sendMessage("Module "+this.ID+" not installed.").queue();
     }
 
     public String getID() {

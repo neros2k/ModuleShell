@@ -1,5 +1,4 @@
 package n2k_.moduleshell.core.command;
-import n2k_.moduleshell.ModuleShell;
 import n2k_.moduleshell.core.AbstractModule;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -19,10 +18,11 @@ public abstract class AbstractSlashCommand extends AbstractMessageCommand {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         if(event.getGuild() == null || !event.getName().equals(super.getName())) return;
-        if(super.getModule().notValid(event.getGuild().getId())) {
-            event.reply(ModuleShell.notEnabledModuleMessage(super.getModule().getID())).queue();
+        CommandContext ctx = new CommandContext(super.getJDA(), event.getCommandString(), event.getMember(), event.getChannel());
+        if(super.getModule().isValid(event.getGuild().getId())) {
+            this.onSlashCommand(ctx, event);
         } else {
-            this.onSlashCommand(new CommandContext(super.getJDA(), event.getCommandString(), event.getMember(), event.getChannel()), event);
+            super.getModule().onInvalidCall(ctx);
         }
     }
 
