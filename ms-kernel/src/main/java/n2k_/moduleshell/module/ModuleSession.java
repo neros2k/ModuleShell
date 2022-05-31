@@ -1,4 +1,4 @@
-package n2k_.moduleshell.core;
+package n2k_.moduleshell.module;
 import java.util.ArrayList;
 import java.util.List;
 public class ModuleSession {

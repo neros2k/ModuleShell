@@ -1,4 +1,5 @@
 package n2k_.moduleshell.core.module;
+import n2k_.moduleshell.ModuleShell;
 import n2k_.moduleshell.core.AbstractListener;
 import n2k_.moduleshell.core.Initilizable;
 import n2k_.moduleshell.core.command.CommandContext;
@@ -30,8 +31,8 @@ public abstract class AbstractModule implements Initilizable {
         this.LISTENER_LIST.add(listener);
     }
 
-    public boolean isValid(String serverId) {
-        return true;
+    public boolean isValid(String guildId) {
+        return ModuleShell.getSessionRepository().isInstalled(guildId, this.ID);
     }
 
     public void onInvalidCall(@NotNull CommandContext ctx) {
