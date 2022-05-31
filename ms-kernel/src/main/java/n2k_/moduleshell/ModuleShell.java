@@ -1,4 +1,6 @@
 package n2k_.moduleshell;
+import n2k_.moduleshell.config.ConfigRepository;
+import n2k_.moduleshell.core.config.IConfigRepository;
 import n2k_.moduleshell.core.session.ISessionRepository;
 import n2k_.moduleshell.core.module.AbstractModule;
 import n2k_.moduleshell.session.SessionRepository;
@@ -7,10 +9,12 @@ import net.dv8tion.jda.api.JDABuilder;
 import org.jetbrains.annotations.NotNull;
 import javax.security.auth.login.LoginException;
 public class ModuleShell {
+    private static IConfigRepository CONFIG_REPOSITORY;
     private static ISessionRepository SESSION_REPOSITORY;
     private static JDA JDA;
 
     public static void main(String @NotNull [] args) throws LoginException {
+        ModuleShell.CONFIG_REPOSITORY = new ConfigRepository();
         ModuleShell.SESSION_REPOSITORY = new SessionRepository();
         ModuleShell.JDA = JDABuilder.createDefault("").build();
     }

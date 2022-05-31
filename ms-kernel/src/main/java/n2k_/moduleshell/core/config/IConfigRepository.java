@@ -1,5 +1,4 @@
 package n2k_.moduleshell.core.config;
-
 public interface IConfigRepository {
     AbstractConfig getConfig(String guildId, String moduleId);
 
