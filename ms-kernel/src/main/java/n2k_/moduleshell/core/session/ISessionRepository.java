@@ -1,7 +1,4 @@
-package n2k_.moduleshell.core;
-
-import n2k_.moduleshell.module.ModuleSession;
-
+package n2k_.moduleshell.core.session;
 public interface ISessionRepository {
     ModuleSession getSession(String guildId);
 
