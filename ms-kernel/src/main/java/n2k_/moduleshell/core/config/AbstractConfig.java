@@ -1,6 +1,5 @@
 package n2k_.moduleshell.core.config;
 import n2k_.moduleshell.core.Initilizable;
-
 import java.util.HashMap;
 import java.util.Map;
 public abstract class AbstractConfig implements Initilizable, Cloneable {

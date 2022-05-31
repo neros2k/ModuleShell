@@ -4,5 +4,7 @@ public interface ISessionRepository {
 
     boolean isInstalled(String guildId, String moduleId);
 
-    void saveSession(ModuleSession session);
+    void enableModule(String guildId, String moduleId);
+
+    void saveSession(String guildId, ModuleSession session);
 }

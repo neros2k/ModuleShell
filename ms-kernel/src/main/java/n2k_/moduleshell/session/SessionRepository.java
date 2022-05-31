@@ -1,7 +1,6 @@
 package n2k_.moduleshell.session;
 import n2k_.moduleshell.core.session.ISessionRepository;
 import n2k_.moduleshell.core.session.ModuleSession;
-
 public class SessionRepository implements ISessionRepository {
     @Override
     public ModuleSession getSession(String guildId) {
@@ -14,7 +13,14 @@ public class SessionRepository implements ISessionRepository {
     }
 
     @Override
-    public void saveSession(ModuleSession session) {
+    public void enableModule(String guildId, String moduleId) {
+        ModuleSession session = this.getSession(guildId);
+        session.getEnabledModules().add(moduleId);
+        this.saveSession(guildId, session);
+    }
+
+    @Override
+    public void saveSession(String guildId, ModuleSession session) {
 
     }
 }

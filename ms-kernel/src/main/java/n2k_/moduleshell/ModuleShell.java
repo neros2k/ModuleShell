@@ -23,6 +23,10 @@ public class ModuleShell {
         module.init();
     }
 
+    public static IConfigRepository getConfigRepository() {
+        return ModuleShell.CONFIG_REPOSITORY;
+    }
+
     public static ISessionRepository getSessionRepository() {
         return ModuleShell.SESSION_REPOSITORY;
     }
