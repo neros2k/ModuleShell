@@ -1,4 +1,4 @@
-package n2k_.moduleshell.config;
+package n2k_.moduleshell;
 import n2k_.moduleshell.core.config.AbstractConfig;
 import n2k_.moduleshell.core.config.IConfigRepository;
 public class ConfigRepository implements IConfigRepository {

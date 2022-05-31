@@ -1,4 +1,4 @@
-package n2k_.moduleshell.session;
+package n2k_.moduleshell;
 import n2k_.moduleshell.core.session.ISessionRepository;
 import n2k_.moduleshell.core.session.ModuleSession;
 public class SessionRepository implements ISessionRepository {

@@ -1,9 +1,7 @@
 package n2k_.moduleshell;
-import n2k_.moduleshell.config.ConfigRepository;
 import n2k_.moduleshell.core.config.IConfigRepository;
 import n2k_.moduleshell.core.session.ISessionRepository;
 import n2k_.moduleshell.core.module.AbstractModule;
-import n2k_.moduleshell.session.SessionRepository;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.jetbrains.annotations.NotNull;

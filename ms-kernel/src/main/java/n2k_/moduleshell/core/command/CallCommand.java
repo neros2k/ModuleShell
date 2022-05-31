@@ -11,7 +11,7 @@ public class CallCommand extends AbstractMessageCommand {
     }
 
     @Override
-    protected void onMessageCommand(CommandContext ctx, MessageReceivedEvent event) {
+    protected void onMessageCommand(CommandContext<MessageReceivedEvent> ctx) {
         this.COMMAND_CALL.call(ctx);
     }
 }

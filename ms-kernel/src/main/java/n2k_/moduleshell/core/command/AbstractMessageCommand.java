@@ -14,14 +14,14 @@ public abstract class AbstractMessageCommand extends AbstractConfigCommand {
         String message = event.getMessage().getContentDisplay();
         String[] split = message.split(" ");
         if(split[0].equals(super.getConfigPrefix(guildId)+super.getConfigName(guildId))) {
-            CommandContext ctx = new CommandContext(super.getJDA(), message, event.getMember(), event.getChannel());
+            CommandContext<MessageReceivedEvent> ctx = new CommandContext<>(super.getJDA(), message, event.getMember(), event.getChannel(), event);
             if(super.getModule().isValid(event.getGuild().getId())) {
-                this.onMessageCommand(ctx, event);
+                this.onMessageCommand(ctx);
             } else {
                 super.getModule().onInvalidCall(ctx);
             }
         }
     }
 
-    protected abstract void onMessageCommand(CommandContext ctx, MessageReceivedEvent event);
+    protected abstract void onMessageCommand(CommandContext<MessageReceivedEvent> ctx);
 }

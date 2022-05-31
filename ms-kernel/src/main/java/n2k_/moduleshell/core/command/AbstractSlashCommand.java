@@ -18,13 +18,13 @@ public abstract class AbstractSlashCommand extends AbstractMessageCommand {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         if(event.getGuild() == null || !event.getName().equals(super.getName())) return;
-        CommandContext ctx = new CommandContext(super.getJDA(), event.getCommandString(), event.getMember(), event.getChannel());
+        CommandContext<SlashCommandInteractionEvent> ctx = new CommandContext<>(super.getJDA(), event.getCommandString(), event.getMember(), event.getChannel(), event);
         if(super.getModule().isValid(event.getGuild().getId())) {
-            this.onSlashCommand(ctx, event);
+            this.onSlashCommand(ctx);
         } else {
             super.getModule().onInvalidCall(ctx);
         }
     }
 
-    protected abstract void onSlashCommand(CommandContext ctx, SlashCommandInteractionEvent event);
+    protected abstract void onSlashCommand(CommandContext<SlashCommandInteractionEvent> ctx);
 }
