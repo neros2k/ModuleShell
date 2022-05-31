@@ -13,13 +13,17 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 public class HelpCommand extends AbstractMessageCommand {
-    public HelpCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
-        super(module, jda, name, description, prefix);
+    private final static String DEFAULT_NAME = "help";
+    private final static String DEFAULT_DESCRIPTION = "Help command.";
+
+    public HelpCommand(AbstractModule module, JDA jda, String prefix) {
+        super(module, jda, "help", "Help command.", prefix);
     }
 
     @Override
     protected void onMessageCommand(@NotNull CommandContext ctx, @NotNull MessageReceivedEvent event) {
         Guild guild = event.getGuild();
+        String guildId = event.getGuild().getId();
         AbstractConfig config = ConfigModule.getConfig(guild.getId(), super.getModule().getID());
         EmbedBuilder builder = new EmbedBuilder();
         builder.setTitle(config.getLocalised("help_title"));
@@ -29,13 +33,21 @@ public class HelpCommand extends AbstractMessageCommand {
                 AbstractConfig commandConfig = ConfigModule.getConfig(guild.getId(), commandModule.getID());
                 StringBuilder stringBuilder = new StringBuilder();
                 commandModule.getCommandList().forEach(command -> {
-                    stringBuilder.append(command.getPrefix())
-                                 .append(command.getName()).append(" - ")
-                                 .append(command.getDescription()).append("\n");
+                    stringBuilder.append(command.getPrefix(guildId))
+                                 .append(command.getName(guildId)).append(" - ")
+                                 .append(commandConfig.getLocalised(command.getName()+".description")).append("\n");
                 });
                 builder.addField(commandConfig.getLocalised("name"), stringBuilder.toString(), false);
             }
         });
         ctx.getChannel().sendMessageEmbeds(builder.build()).queue();
+    }
+
+    public static String getDefaultName() {
+        return HelpCommand.DEFAULT_NAME;
+    }
+
+    public static String getDefaultDescription() {
+        return HelpCommand.DEFAULT_DESCRIPTION;
     }
 }

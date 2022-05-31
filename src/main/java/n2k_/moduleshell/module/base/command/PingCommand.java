@@ -7,8 +7,11 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 public class PingCommand extends AbstractMessageCommand {
-    public PingCommand(AbstractModule module, JDA jda, String name, String description, String prefix) {
-        super(module, jda, name, description, prefix);
+    private final static String DEFAULT_NAME = "ping";
+    private final static String DEFAULT_DESCRIPTION = "Ping command.";
+
+    public PingCommand(AbstractModule module, JDA jda, String prefix) {
+        super(module, jda, PingCommand.DEFAULT_NAME, PingCommand.DEFAULT_DESCRIPTION, prefix);
     }
 
     @Override
@@ -16,5 +19,13 @@ public class PingCommand extends AbstractMessageCommand {
         String message = ConfigModule.getConfig(event.getGuild().getId(), super.getModule().getID())
                 .getLocalised("ping_message");
         event.getMessage().reply(message).queue();
+    }
+
+    public static String getDefaultName() {
+        return PingCommand.DEFAULT_NAME;
+    }
+
+    public static String getDefaultDescription() {
+        return PingCommand.DEFAULT_DESCRIPTION;
     }
 }

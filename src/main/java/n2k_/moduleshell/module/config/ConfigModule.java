@@ -14,7 +14,7 @@ public class ConfigModule extends AbstractCommandModule {
     }
 
     public static HashMap<String, AbstractConfig> getGuildConfig(String serverId) {
-        ConfigModule configModule = (ConfigModule) ModuleEnum.CONFIG_MODULE.getModule();
+        ConfigModule configModule = (ConfigModule) ModuleEnum.config_module.getModule();
         if(!configModule.CONFIG_MAP.containsKey(serverId)) {
             configModule.CONFIG_MAP.put(serverId, new HashMap<>());
         }

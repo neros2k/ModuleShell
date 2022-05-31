@@ -28,6 +28,16 @@ public abstract class AbstractCommand extends AbstractListener {
         return this.PREFIX;
     }
 
+    public String getName(String serverId) {
+        return ConfigModule.getConfig(serverId, super.getModule().getID())
+                .getValues().getOrDefault(this.NAME + ".name", this.NAME);
+    }
+
+    public String getDescription(String serverId) {
+        return ConfigModule.getConfig(serverId, super.getModule().getID())
+                .getValues().getOrDefault(this.NAME + ".description", this.DESCRIPTION);
+    }
+
     public String getPrefix(String serverId) {
         return ConfigModule.getConfig(serverId, super.getModule().getID())
                            .getValues().getOrDefault("prefix", this.PREFIX);

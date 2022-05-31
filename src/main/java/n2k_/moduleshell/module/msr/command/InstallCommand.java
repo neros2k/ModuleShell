@@ -8,6 +8,9 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 public class InstallCommand extends AbstractMessageCommand {
+    private final static String DEFAULT_NAME = "install";
+    private final static String DEFAULT_DESCRIPTION = "Module install command.";
+
     public InstallCommand(AbstractModule module, String name, String description, String prefix) {
         super(module, module.getJDA(), name, description, prefix);
     }
@@ -31,5 +34,13 @@ public class InstallCommand extends AbstractMessageCommand {
                 success.editMessage("Module `" + args[1] + "` is already installed.").queue();
             }
         });
+    }
+
+    public static String getDefaultName() {
+        return InstallCommand.DEFAULT_NAME;
+    }
+
+    public static String getDefaultDescription() {
+        return InstallCommand.DEFAULT_DESCRIPTION;
     }
 }

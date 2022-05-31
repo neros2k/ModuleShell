@@ -11,9 +11,10 @@ public abstract class AbstractMessageCommand extends AbstractCommand {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+        String guildId = event.getGuild().getId();
         String message = event.getMessage().getContentDisplay();
         String[] split = message.split(" ");
-        if(split[0].equals(super.getPrefix(event.getGuild().getId())+super.getName())) {
+        if(split[0].equals(super.getPrefix(guildId)+super.getName(guildId))) {
             if(super.getModule().notValid(event.getGuild().getId())) {
                 event.getMessage().reply(ModuleShell.notEnabledModuleMessage(super.getModule().getID())).queue();
             } else {
