@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base;
+package n2k_.moduleshell.core;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public abstract class AbstractListener extends ListenerAdapter implements Initilizable {
     private final AbstractModule MODULE;
@@ -9,7 +9,7 @@ public abstract class AbstractListener extends ListenerAdapter implements Initil
 
     @Override
     public void init() {
-        this.MODULE.addListener(this);
+        this.MODULE.getJDA().addEventListener(this);
     }
 
     public AbstractModule getModule() {

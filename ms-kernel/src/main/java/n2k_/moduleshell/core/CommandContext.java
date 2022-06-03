@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base;
+package n2k_.moduleshell.core;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;

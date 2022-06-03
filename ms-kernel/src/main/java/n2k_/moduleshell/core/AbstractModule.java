@@ -1,4 +1,4 @@
-package n2k_.moduleshell.base;
+package n2k_.moduleshell.core;
 import net.dv8tion.jda.api.JDA;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +23,11 @@ public abstract class AbstractModule implements Initilizable {
         this.LISTENER_LIST.forEach(AbstractListener::init);
     }
 
-    void addListener(AbstractListener listener) {
+    public void addListener(AbstractListener listener) {
         this.LISTENER_LIST.add(listener);
     }
 
-    void addCommand(AbstractCommand command) {
+    public void addCommand(AbstractCommand command) {
         this.COMMAND_LIST.add(command);
     }
 
