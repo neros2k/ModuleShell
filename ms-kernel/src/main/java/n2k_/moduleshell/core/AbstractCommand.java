@@ -17,7 +17,7 @@ public abstract class AbstractCommand extends AbstractListener {
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         String[] args = event.getMessage().getContentDisplay().split(" ");
         if(args[0].equals(this.PREFIX+this.NAME)) {
-            this.onCommandCall(new CommandContext(args, event, this));
+            this.onCommandCall(new CommandContext(AbstractCommand.removeFirstElement(args), event, this));
         }
     }
 
@@ -33,5 +33,11 @@ public abstract class AbstractCommand extends AbstractListener {
 
     public String getPrefix() {
         return this.PREFIX;
+    }
+
+    public static String @NotNull [] removeFirstElement(String @NotNull [] array) {
+        String[] newArray = new String[array.length - 1];
+        System.arraycopy(array, 1, newArray, 0, array.length - 1);
+        return newArray;
     }
 }
