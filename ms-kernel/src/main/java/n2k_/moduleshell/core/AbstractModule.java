@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 public abstract class AbstractModule implements Initilizable {
     private final JDA JDA;
+    private final String ID;
     private final String NAME;
     private final String DESCRIPTION;
     private final List<AbstractListener> LISTENER_LIST;
     private final List<AbstractCommand> COMMAND_LIST;
 
-    public AbstractModule(JDA jda, String name, String description) {
+    public AbstractModule(JDA jda, String id, String name, String description) {
         this.JDA = jda;
+        this.ID = id;
         this.NAME = name;
         this.DESCRIPTION = description;
         this.LISTENER_LIST = new ArrayList<>();
@@ -33,6 +35,10 @@ public abstract class AbstractModule implements Initilizable {
 
     public JDA getJDA() {
         return this.JDA;
+    }
+
+    public String getID() {
+        return this.ID;
     }
 
     public String getName() {
